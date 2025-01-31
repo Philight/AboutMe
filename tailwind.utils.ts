@@ -7,9 +7,9 @@ import * as fs from 'fs';
 // import postcssPluginSass from '@csstools/postcss-sass';
 // import postcssPluginReporter from 'postcss-reporter';
 
-import { deepMutate } from '../../snippets/TS/object';
+import { deepMutate } from './src/utils/object';
 // import '@philight/prototype'
-import '../../snippets/TS/prototype';
+import './src/utils/prototype';
 
 // ================================================================
 
@@ -21,8 +21,8 @@ const PROPERTY_PREFIXES = {
 
 const PROPERTY_TRANSFORMS = {
   // colors: propertyDeclaration => `rgba(var(${propertyDeclaration}) / <alpha-value>)`,
-  fontFamily: propertyDeclaration => `var(${propertyDeclaration})`,
-  boxShadow: propertyDeclaration => `var(${propertyDeclaration})`,
+  fontFamily: (propertyDeclaration) => `var(${propertyDeclaration})`,
+  boxShadow: (propertyDeclaration) => `var(${propertyDeclaration})`,
 };
 
 /**
@@ -109,13 +109,13 @@ export function parseCSS(pathToFile) {
   const CSSLines = CSSInput.split(/\r?\n/);
 
   const prefixes = Object.keys(PROPERTY_PREFIXES);
-  const filteredLines = CSSLines.filter(line => prefixes.some(pref => line.includes(pref)));
+  const filteredLines = CSSLines.filter((line) => prefixes.some((pref) => line.includes(pref)));
 
   // Transform declarations // Link Tailwind properties to CSS variables
 
   for (const CSSDeclaration of filteredLines) {
     const declarationName = String(CSSDeclaration.split(':')[0]).removeWhitespace(); // --font-family-heading
-    const prefix = prefixes.find(pref => declarationName.includes(pref)); // --font-family-
+    const prefix = prefixes.find((pref) => declarationName.includes(pref)); // --font-family-
 
     const propertyName = declarationName.split(prefix)[1]; // heading
     const tailwindName = PROPERTY_PREFIXES[prefix]; // fontFamily

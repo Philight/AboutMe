@@ -1,0 +1,43 @@
+/**
+ * CUSTOMISATION 
+ * 
+ * (modifiers, states) further customisation components, blocks, pages..
+ *
+ * e.g. COMPONENT (Button) ON Login Page, BLOCK (ProductListing) ON Shop Page
+ */
+
+@layer utilities {
+  /** 
+   * MOLECULES / ORGANISMS
+   */
+
+  /** 
+   * SECTIONS / BLOCKS 
+   */
+
+  /** 
+   * PAGES 
+   */
+
+  .page--home {
+    @apply bg-black-primary;
+
+    .headline__c {
+      @apply h-[calc(100vh-var(--header-height))];
+      @apply text-gray-light;
+
+      > .headline__content {
+        @apply mt-screen-1/10-y;
+        @apply mt-auto;
+      }
+
+      > .image__c {
+        @apply mt-6 flex-[0];
+      }
+
+      > .button__c {
+        @apply mb-2 mt-auto;
+      }
+    }
+  }
+}

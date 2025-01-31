@@ -6,11 +6,11 @@ import { ReactNode } from 'react';
 import { ThemeProvider } from '@/context/ThemeProvider';
 import { AuthProvider } from '@/context/AuthProvider';
 
-import { Toaster } from './_components/shadcn/sonner';
-import { Footer } from './_components/organisms/Footer';
-import Container from './_components/layouts/Container';
-import { TooltipProvider } from './_components/shadcn/tooltip';
-import Header from './_components/organisms/Header';
+import { Toaster } from '@/components/shadcn/sonner';
+import { Footer } from '@/components/organisms/Footer';
+import Container from '@/components/layouts/Container';
+import { TooltipProvider } from '@/components/shadcn/tooltip';
+import Header from '@/components/organisms/Header';
 
 import { geist } from '/public/fonts/geist';
 import '../styles/globals.css';

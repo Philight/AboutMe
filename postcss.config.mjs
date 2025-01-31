@@ -3,6 +3,10 @@ const config = {
   plugins: {
     'postcss-import': {},
     tailwindcss: {},
+    autoprefixer: {},
+    cssnano: {
+      preset: 'default',
+    },
   },
 };
 

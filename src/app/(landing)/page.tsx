@@ -1,8 +1,11 @@
-import Hero from '@/components/organisms/Hero';
 import { getTranslations } from 'next-intl/server';
-import { getUsersWithPaginationAndFilter } from '@/utils/api/usersApi';
+
+import Hero from '@/components/organisms/Hero';
 import Users from '@/components/organisms/Users';
 import Main from '@/components/layouts/Main';
+import { getUsersWithPaginationAndFilter } from '@/utils/api/usersApi';
+
+// ===============================================================
 
 export default async function Home() {
   const t = await getTranslations('home');

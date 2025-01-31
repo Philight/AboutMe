@@ -1,5 +1,5 @@
-import { generateBlurDataURL } from "@/utils/server/functions/images";
-import Image, { ImageProps } from "next/image"
+import Image, { ImageProps } from 'next/image';
+import { generateBlurDataURL } from '@/utils/server/functions/images';
 
 export interface LazyLoadImagePropsType extends ImageProps {}
 
@@ -9,9 +9,7 @@ const LazyLoadImage = async (props: LazyLoadImagePropsType) => {
 
   const base64 = await generateBlurDataURL(src);
 
-  return (
-    <Image {...rest} src={src} alt={alt} loading="lazy" placeholder="blur" blurDataURL={base64} />
-  )
-}
+  return <Image {...rest} src={src} alt={alt} loading="lazy" placeholder="blur" blurDataURL={base64} />;
+};
 
-export default LazyLoadImage
+export default LazyLoadImage;

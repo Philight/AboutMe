@@ -1,27 +1,28 @@
-import './_style/globals.css';
-import Header from './_components/organisms/Header';
-import type {
-  Metadata, Viewport 
-} from 'next';
+import type { Metadata, Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 import { ReactNode } from 'react';
-import { ThemeProvider } from '../context/ThemeProvider';
-import {
-  getLocale, getMessages 
-} from 'next-intl/server';
+
+import { ThemeProvider } from '@/context/ThemeProvider';
 import { AuthProvider } from '@/context/AuthProvider';
+
 import { Toaster } from './_components/shadcn/sonner';
 import { Footer } from './_components/organisms/Footer';
 import Container from './_components/layouts/Container';
 import { TooltipProvider } from './_components/shadcn/tooltip';
-import { geist } from '@/public/fonts/geist';
+import Header from './_components/organisms/Header';
+
+import { geist } from '/public/fonts/geist';
+import '../styles/globals.css';
+
+// ============================================================
 
 export const viewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
     { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ]
-}
+  ],
+};
 
 export const metadata: Metadata = {
   title: {
@@ -89,7 +90,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({ children, }: Readonly<{
+// ============================================================
+
+export default async function RootLayout({
+  children,
+}: Readonly<{
   children: ReactNode;
 }>) {
   const locale = await getLocale();
@@ -97,18 +102,10 @@ export default async function RootLayout({ children, }: Readonly<{
 
   return (
     <html lang={locale} suppressHydrationWarning={true}>
-      <body
-        className={`${geist.className} antialiased`} suppressHydrationWarning={true}
-        id='body'
-      >
+      <body className={`${geist.className} antialiased`} suppressHydrationWarning={true} id="body">
         <AuthProvider>
           <NextIntlClientProvider messages={messages}>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
               <TooltipProvider>
                 <Container>
                   <Header />

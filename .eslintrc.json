@@ -1,5 +1,10 @@
 {
   "root": true,
+  "plugins": [
+    "perfectionist",
+    "unused-imports",
+    "prettier"
+  ],  
   "extends": [
     "next/core-web-vitals",
     "eslint:recommended",

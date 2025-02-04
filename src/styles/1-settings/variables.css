@@ -27,11 +27,11 @@
     --font-space-mono: 'Space Mono';
     --font-lora: 'Lora';
 
-    --font-family-heading: var(--font-space-mono), var(--font-mono);
+    --font-family-heading: var(--font-lora), var(--font-sans-serif);
     --font-family-subheading: var(--font-lora), var(--font-serif);
-    --font-family-body: var(--font-lora), var(--font-mono);
-    --font-family-btn: var(--font-space-mono), var(--font-sans-serif);
-    --font-family-highlight: var(--font-felix), var(--font-serif);
+    --font-family-body: var(--font-lora), var(--font-sans-serif);
+    --font-family-btn: var(--font-lora), var(--font-sans-serif);
+    --font-family-highlight: var(--font-lora), var(--font-sans-serif);
 
     /** 
      * COLOR 
@@ -51,9 +51,11 @@
 
     /* PALETTE */
 
+    --color-black-background: rgb(52, 58, 64);
+    --color-black-content: rgb(73, 80, 87);
+    --color-gray-content: rgb(108, 117, 125);
+
     --color-snow: rgb(209 239 255);
-    --color-blue-dark: rgb(20 34 45);
-    --color-blue-light: rgb(38 61 80);
     --color-blue-highlight: rgb(39 84 122);
     --color-blue-sky: rgb(0 143 255);
     --color-red-sky: #ff0000;
@@ -61,7 +63,7 @@
     /* PRIMARY */
 
     --color-white-primary: rgb(255 255 255);
-    --color-black-primary: rgb(12 20 26);
+    --color-black-primary: var(--color-black-background);
     --color-blue-primary: rgb(0 60 86);
     --color-red-primary: rgb(255 50 50);
 
@@ -77,7 +79,7 @@
 
     --gutter-outer-x: 24px;
     --gutter-outer-y: 40px;
-    --navigation-height: 64px;
+    --header-height: 64px;
     --announcement-height: 0px;
 
     /**
@@ -86,17 +88,16 @@
 
     @media screen(tab-sm) {
       --gutter-outer-x: 36px;
-      --navigation-height: 64px;
+      --header-height: 64px;
     }
     @media screen(desk-sm) {
       --gutter-outer-x: 64px;
       --gutter-outer-y: 64px;
-      --navigation-height: 80px;
+      --header-height: 80px;
     }
     @media screen(desk-lg) {
-      --gutter-outer-x: 80px;
-      --gutter-outer-y: 80px;
-      --navigation-height: 84px;
+      --gutter-outer-x: 78px;
+      --gutter-outer-y: 78px;
     }
 
     /** 

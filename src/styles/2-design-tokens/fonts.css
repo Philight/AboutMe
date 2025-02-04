@@ -74,16 +74,12 @@
   }
   .btn-text--lg {
     @apply text-base tab-sm:text-xl;
-    @apply tracking-2;
-    @apply uppercase;
   }
   .btn-text--md {
     @apply text-sm;
   }
   .btn-text--sm {
     @apply text-xs-plus tab-sm:text-sm;
-    @apply tracking-2;
-    @apply uppercase;
   }
 
   .highlight-text {

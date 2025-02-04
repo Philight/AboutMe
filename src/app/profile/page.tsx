@@ -5,7 +5,7 @@ import Hero from '@/components/organisms/Hero';
 import { getTranslations } from 'next-intl/server';
 import { ProfileSocials } from '@/components/organisms/ProfileSocials';
 import { ProfileDelete } from '@/components/organisms/ProfileDelete';
-import Main from '@/components/layouts/Main';
+import Main from '@/layouts/Main';
 
 const Profile = async () => {
   const user = await getUser();

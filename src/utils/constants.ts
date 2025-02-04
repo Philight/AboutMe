@@ -5,13 +5,14 @@ export const LOCALE_COOKIE_NAME = 'locale';
 export const DEFAULT_LOCALE: Locale = 'en';
 
 export type LocaleType = {
-  label: 'Italiano' | 'English';
+  label: 'Česky' | 'Italiano' | 'English';
   tag: Locale;
 };
 
 export type AvailableLocalesType = LocaleType[];
 
 export const AVAILABLE_LOCALES: AvailableLocalesType = [
+  { label: 'Česky', tag: 'cs' },
   { label: 'Italiano', tag: 'it' },
   { label: 'English', tag: 'en' },
 ];

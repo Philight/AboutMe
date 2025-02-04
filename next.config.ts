@@ -5,6 +5,10 @@ import withPlaiceholder from '@plaiceholder/next';
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 const nextConfig: NextConfig = {
+  // DEVELOPMENT
+  devIndicators: {
+    buildActivityPosition: 'top-left',
+  },
   images: {
     remotePatterns: [
       {

@@ -6,7 +6,7 @@ import Heading from '@/components/atoms/Heading';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/shadcn/tooltip';
 import { v4 as uuidv4 } from 'uuid';
 import { Badge } from '@/components/shadcn/badge';
-import Main from '@/components/layouts/Main';
+import Main from '@/layouts/Main';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/shadcn/avatar';
 
 export type ImageDataType = {

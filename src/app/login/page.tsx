@@ -14,7 +14,7 @@ import { useRouter } from 'next/navigation';
 import Heading from '@/components/atoms/Heading';
 import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
-import Main from '@/components/layouts/Main';
+import Main from '@/layouts/Main';
 
 const Login = () => {
   const t = useTranslations();

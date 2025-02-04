@@ -1,20 +1,43 @@
-import { getTranslations } from 'next-intl/server';
+import { Metadata } from 'next';
 
-import Hero from '@/components/organisms/Hero';
-import Users from '@/components/organisms/Users';
-import Main from '@/components/layouts/Main';
-import { getUsersWithPaginationAndFilter } from '@/utils/api/usersApi';
+import BlogPost from '@/components/organisms/BlogPost';
 
 // ===============================================================
 
-export default async function Home() {
-  const t = await getTranslations('home');
-  const usersAndPagination = await getUsersWithPaginationAndFilter();
+export const dynamic = 'force-dynamic';
 
-  return (
-    <Main>
-      <Hero title={t('hero_title')} />
-      <Users usersAndPagination={usersAndPagination} />
-    </Main>
-  );
+// ===============================================================
+
+interface Post {
+  id: string;
+  title: string;
+  content: string;
+}
+
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export default async function Page({ params }: Props) {
+  const resolvedParams = await params;
+  const { id } = resolvedParams;
+
+  const data = await fetch(`https://api.vercel.app/blog/${id}`);
+  const post: Post[] = await data.json();
+
+  return <BlogPost {...post} />;
+}
+
+// ===============================================================
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const resolvedParams = await params;
+  const { id } = resolvedParams;
+
+  const data = await fetch(`https://api.vercel.app/blog/${id}`);
+  const post: Post[] = await data.json();
+
+  // const user = await getUserPublic(id);
+
+  return { title: `Blog | Post ${post.id}`, description: `${post.author} | ${post.title}` };
 }

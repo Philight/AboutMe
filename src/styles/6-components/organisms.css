@@ -1,0 +1,56 @@
+.hero__c {
+  @apply page-max-w px-[calc(var(--gutter-outer-x)-4px)] desk-sm:px-[calc(var(--gutter-outer-x)-8px)];
+  @apply relative h-screen top-0 left-0 w-full desk-sm:max-h-[600px];
+  h1 {
+    @apply mt-screen-1/2-y desk-sm:mt-[315px] max-w-[530px];
+    @apply text-3xl desk-sm:text-4xl font-bold;
+  }
+  img {
+    @apply -z-10;
+  }
+}
+
+.blog-list__c {
+  @apply page-max-w px-[calc(var(--gutter-outer-x))] desk-sm:px-[calc(var(--gutter-outer-x))];
+  @apply my-[42px];
+}
+
+.blog-post__c {
+  @apply page-max-w px-[calc(var(--gutter-outer-x))] desk-sm:px-[calc(var(--gutter-outer-x))];
+  @apply f-col f-center-y my-48;
+  @media screen(desk-sm) {
+    @apply flex-row my-[61px];
+  }
+  h2 {
+    @apply text-black-content;
+  }
+  .divider {
+    @apply max-w-[34px] my-24;
+    @apply bg-[#C4C4C4];
+    @media screen(desk-sm) {
+      @apply my-0 ml-[24px] mr-[21px];
+    }
+  }
+  p {
+    @apply text-black-content;
+  }
+}
+
+.create-post__c {
+  @apply page-max-w px-[calc(var(--gutter-outer-x))] desk-sm:px-[calc(var(--gutter-outer-x))];
+  @apply w-full max-w-[651px] mt-[126px] mb-[76px];
+  .grid {
+    @apply gap-[23px];
+  }
+  input {
+    @apply h-[54px] border-solid border-[#00000021];
+    @apply h-[54px] border-solid border-black/10;
+  }
+  button {
+    @apply mt-[21px];
+    @apply btn--lg;
+    @media screen(desk-sm) {
+      @apply w-[190px] h-[54px];
+    }
+  }
+}

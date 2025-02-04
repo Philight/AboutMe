@@ -5,7 +5,7 @@ export default {
     </svg>
   ),
   Q2Logo: (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="81" height="54" fill="none" viewBox="0 0 81 54">
+    <svg {...props} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="81" height="54" fill="none" viewBox="0 0 81 54">
       <path fill="url(#pattern0_23_2)" d="M0 0h81v54H0z"></path>
       <defs>
         <pattern id="pattern0_23_2" width="1" height="1" patternContentUnits="objectBoundingBox">

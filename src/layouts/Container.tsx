@@ -5,10 +5,6 @@ export interface ContainerPropsType extends DetailedHTMLProps<HTMLAttributes<HTM
   children: ReactNode;
 }
 
-const Container = (props: ContainerPropsType) => {
-  const { className, children } = props;
-
-  return <div className={cn('flex flex-col gap-8 items-center p-4', className)}>{children}</div>;
-};
-
-export default Container;
+export default function Container({ children, className }: ContainerPropsType) {
+  return <div className={cn('container__c f-col', className)}>{children}</div>;
+}

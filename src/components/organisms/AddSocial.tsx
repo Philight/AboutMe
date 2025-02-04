@@ -1,28 +1,29 @@
-import { Plus } from "lucide-react"
+import { Plus } from 'lucide-react';
 import {
-  AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger 
-} from "../shadcn/alertdialog"
-import { Input } from "../shadcn/input"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { socialSchema } from "@/lib/zod/ValidationSchemas"
-import { zodResolver } from "@hookform/resolvers/zod"
-import {
-  useActionState, useEffect 
-} from "react"
-import { createSocial } from "@/utils/server/actions/user"
-import {
-  ICONS_SIZES, INITIAL_STATE 
-} from "@/utils/constants"
-import {
-  Form, FormControl, FormField, FormItem, FormLabel, FormMessage 
-} from "../shadcn/form"
-import { useTranslations } from "next-intl"
-import { showToast } from "@/utils/functions"
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '../shadcn/alertdialog';
+import { Input } from '../shadcn/input';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { socialSchema } from '@/lib/zod/ValidationSchemas';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useActionState, useEffect } from 'react';
+import { createSocial } from '@/utils/server/actions/user';
+import { ICONS_SIZES, INITIAL_STATE } from '@/utils/constants';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../shadcn/form';
+import { useTranslations } from 'next-intl';
+import { showToast } from '@/utils/functions';
 
 export const AddSocial = () => {
   const t = useTranslations();
-  const [state, formAction, pending] = useActionState(createSocial, INITIAL_STATE)
+  const [state, formAction, pending] = useActionState(createSocial, INITIAL_STATE);
   const form = useForm<z.infer<typeof socialSchema>>({
     resolver: zodResolver(socialSchema),
     defaultValues: {
@@ -30,14 +31,14 @@ export const AddSocial = () => {
       tag: '',
       url: '',
     },
-    mode: 'onChange'
-  })
- 
+    mode: 'onChange',
+  });
+
   useEffect(() => {
     if (state.message && state.message.trim().length !== 0) {
-      showToast(state.status, state.message)
+      showToast(state.status, state.message);
     }
-  }, [state])
+  }, [state]);
 
   return (
     <AlertDialog>
@@ -48,8 +49,8 @@ export const AddSocial = () => {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>{t("profile.add_social_title")}</AlertDialogTitle>
-          <AlertDialogDescription>{t("profile.add_social_description")}</AlertDialogDescription>
+          <AlertDialogTitle>{t('profile.add_social_title')}</AlertDialogTitle>
+          <AlertDialogDescription>{t('profile.add_social_description')}</AlertDialogDescription>
         </AlertDialogHeader>
         <Form {...form}>
           <form action={formAction} className="space-y-4">
@@ -60,12 +61,7 @@ export const AddSocial = () => {
                 <FormItem>
                   <FormLabel>Label</FormLabel>
                   <FormControl>
-                    <Input 
-                      {...field} 
-                      placeholder="e.g. Twitter"
-                      type="text"
-                      name="label" 
-                    />
+                    <Input {...field} placeholder="e.g. Twitter" type="text" name="label" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -78,12 +74,7 @@ export const AddSocial = () => {
                 <FormItem>
                   <FormLabel>Tag</FormLabel>
                   <FormControl>
-                    <Input 
-                      {...field} 
-                      placeholder="e.g. your_twitter_username"
-                      type="text"
-                      name="tag" 
-                    />
+                    <Input {...field} placeholder="e.g. your_twitter_username" type="text" name="tag" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -96,24 +87,23 @@ export const AddSocial = () => {
                 <FormItem>
                   <FormLabel>Url</FormLabel>
                   <FormControl>
-                    <Input 
-                      {...field} 
-                      placeholder="e.g. https://twitter.com"
-                      type="url"
-                      name="url" 
-                    />
+                    <Input {...field} placeholder="e.g. https://twitter.com" type="url" name="url" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
             <div className="grid grid-cols-2 gap-2 justify-between items-center w-full">
-              <AlertDialogAction type="submit" disabled={pending || !form.formState.isValid}>{t("buttons.submit")}</AlertDialogAction>
-              <AlertDialogCancel type="reset" onClick={()=>form.reset()}>{t("buttons.cancel")}</AlertDialogCancel>
+              <AlertDialogAction type="submit" disabled={pending || !form.formState.isValid}>
+                {t('buttons.submit')}
+              </AlertDialogAction>
+              <AlertDialogCancel type="reset" onClick={() => form.reset()}>
+                {t('buttons.cancel')}
+              </AlertDialogCancel>
             </div>
           </form>
         </Form>
       </AlertDialogContent>
     </AlertDialog>
-  )
-}
+  );
+};

@@ -3,16 +3,10 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { ReactNode } from 'react';
 
-import { ThemeProvider } from '@/context/ThemeProvider';
-import { AuthProvider } from '@/context/AuthProvider';
+import Providers from './providers';
 
-import { Toaster } from '@/components/shadcn/sonner';
-import { Footer } from '@/components/organisms/Footer';
-import Container from '@/components/layouts/Container';
-import { TooltipProvider } from '@/components/shadcn/tooltip';
-import Header from '@/components/organisms/Header';
-
-import { geist } from '/public/fonts/geist';
+// import { geist } from '/public/fonts/geist';
+import { lora } from '/public/fonts/lora';
 import '../styles/globals.css';
 
 // ============================================================
@@ -102,21 +96,10 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning={true}>
-      <body className={`${geist.className} antialiased`} suppressHydrationWarning={true} id="body">
-        <AuthProvider>
-          <NextIntlClientProvider messages={messages}>
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-              <TooltipProvider>
-                <Container>
-                  <Header />
-                  {children}
-                  <Toaster />
-                  <Footer />
-                </Container>
-              </TooltipProvider>
-            </ThemeProvider>
-          </NextIntlClientProvider>
-        </AuthProvider>
+      <body className={`${lora.className} antialiased`} suppressHydrationWarning={true} id="body">
+        <NextIntlClientProvider messages={messages}>
+          <Providers>{children}</Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -1,17 +1,24 @@
-import Heading from "../atoms/Heading"
+import Heading from '../atoms/Heading';
+import LazyLoadImage from '@/components/atoms/LazyLoadImage';
 
-export interface HeroPropsType {
-  title: string
+import { cn } from '@/utils/functions';
+import type { IGenericProps } from '@/types/generic-types';
+
+// ============================================================================
+
+export interface HeroPropsType extends IGenericProps {
+  title: string;
+  imageProps: {
+    src: string;
+    alt: string;
+  };
 }
 
-const Hero = (props: HeroPropsType) => {
-  const { title } = props
-
+export default function Hero({ title, className, imageProps }: HeroPropsType) {
   return (
-    <section className="h-[80lvh] w-full flex items-end">
-      <Heading size="text-8xl" tag="h1">{title}</Heading>
+    <section className={cn('hero__c ', className)}>
+      <LazyLoadImage fill {...(imageProps ?? {})} />
+      <Heading tag="h1">{title}</Heading>
     </section>
-  )
+  );
 }
-
-export default Hero

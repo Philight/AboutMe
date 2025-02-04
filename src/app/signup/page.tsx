@@ -14,7 +14,7 @@ import Heading from '@/components/atoms/Heading';
 import { useTranslations } from 'next-intl';
 import { INITIAL_STATE } from '@/utils/constants';
 import { showToast } from '@/utils/functions';
-import Main from '@/components/layouts/Main';
+import Main from '@/layouts/Main';
 
 const Signup = () => {
   const t = useTranslations();

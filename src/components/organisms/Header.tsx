@@ -23,8 +23,8 @@ export default function Header() {
   // const [mounted, setMounted] = useState(false);
 
   return (
-    <header className="flex justify-between w-full p-4 sticky top-0 left-0 right-0 z-[97]">
-      <Icon.Q2Logo className="" />
+    <header className="header__c">
+      <Icon.Q2Logo className="logo" />
 
       <nav className="flex items-center">
         <li>
@@ -39,6 +39,8 @@ export default function Header() {
     </header>
   );
 }
+
+// ================================================================
 
 interface FloatingMenuProps extends IGenericProps {}
 

@@ -1,9 +1,6 @@
 /* TAILWIND */
 @import './tailwind.css';
 
-/* SHADCN */
-@import './shadcn.css';
-
 /* EXTERNAL */
 
 /* --- Layer: Base --- */
@@ -46,3 +43,6 @@
 @import './7-customisations/components.css';
 @import './7-customisations/pages.css';
 @import './7-customisations/plugins.css';
+
+/* SHADCN */
+@import './shadcn.css';

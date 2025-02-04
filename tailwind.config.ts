@@ -21,7 +21,6 @@ const CSSFile = 'src/styles/1-settings/variables.css';
 
 const CSSVariablesPath = path.join(__dirname, CSSFile);
 const CSS_VARIABLES = parseCSS(CSSVariablesPath) ?? {};
-console.log('CSS_VARIABLES', CSS_VARIABLES);
 
 // =========================================================================
 

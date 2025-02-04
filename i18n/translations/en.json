@@ -6,7 +6,7 @@
     "signup": "Signup",
     "profile": "Profile",
     "logout": "Logout",
-    "create_post": "Přidat článek"
+    "create_post": "New article"
   },
   "buttons": {
     "delete": "Delete",
@@ -31,9 +31,26 @@
     }
   },
   "home": {
-    "hero_title": "About our clique",
+    "hero_title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "blog_title": "Newest",
+    "visit_blog_post": "Visit {author}'s blog post",
     "user_visit_profile": "Visit {username}'s profile",
     "user_no_socials": "This user has no socials yet."
+  },
+  "no_blog_posts": {
+    "title": "No posts found :(",
+    "description": "Well that was unfortunate...",
+    "content": "Maybe try again?"
+  },
+  "posts": {
+    "hero_title": "Title"
+  },
+  "posts_create": {
+    "hero_title": "Article creation",
+    "title": "Title",
+    "content": "Content",
+    "author": "Author",
+    "send": "Send"
   },
   "user": {
     "hero_title": "About {name}",
@@ -77,7 +94,7 @@
   },
   "footer": {
     "title": "Need any support or have a new project in mind? We're always open for a chat, so get in touch to find out how we can help!",
-    "subtitle": "Developed with ❤️ by",
+    "subtitle": "Developed & Designed by",
     "follow_us": "Follow us",
     "sitemap": "Sitemap"
   }

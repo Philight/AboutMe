@@ -1,7 +1,11 @@
 import Image, { ImageProps } from 'next/image';
 import { generateBlurDataURL } from '@/utils/server/functions/images';
 
-export interface LazyLoadImagePropsType extends ImageProps {}
+export interface LazyLoadImagePropsType extends ImageProps {
+  src: string;
+  alt: string;
+  width?: number;
+}
 
 // USE THIS ONLY ON SERVER SIDE COMPONENTS
 const LazyLoadImage = async (props: LazyLoadImagePropsType) => {

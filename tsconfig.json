@@ -22,6 +22,7 @@
       "@/atoms/*": ["src/components/atoms/*"],
       "@/molecules/*": ["src/components/molecules/*"],
       "@/organisms/*": ["src/components/organisms/*"],
+      "@/lib/*": ["lib/*"],
       "@/types/*": ["./@types/*"],
       "@/*": ["src/*"]
     }

@@ -1,11 +1,21 @@
 export { default } from 'next-auth/middleware';
 import { NextResponse, NextRequest } from 'next/server';
+import { routes } from './navigation';
+
+// ----------------------------------------------------------------------
 
 export async function middleware(request: NextRequest) {
   /**
    * Manual redirecting (with business conditions)
    */
-  // return NextResponse.redirect(new URL(routes.dashboard.root, request.url));
+  const requestPathname = request.nextUrl.pathname;
+  switch (true) {
+    // Home
+    case requestPathname === routes.home:
+      /* Redirect to Blog as landing page */
+      return NextResponse.redirect(new URL(routes.blog.root, request.url));
+      break;
+  }
 }
 
 export const config = {

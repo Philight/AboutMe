@@ -9,9 +9,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button } from '@/components/shadcn/button';
 import FormProvider, { Field, useForm } from '@/components/molecules/hook-form';
+import { useFormErrors } from '@/hooks/use-form-errors';
 
 import Container from '@/layouts/Container';
 import { cn, showToast } from '@/utils/functions';
+import { IS_DEVELOPMENT } from '@/utils/constants';
 
 import type { IGenericProps } from '@/types/generic-types';
 
@@ -60,19 +62,16 @@ export default function CreatePost({ className }: CreatePostProps) {
 
         // RESPONSE OK
         if (state.message && state.message.trim().length !== 0) {
-          showToast({ status: state.status, message: state.message });
+          showToast({ type: 'ERROR', message: t('success') });
         }
-
-        // enqueueSnackbar(<Box sx={{ whiteSpace: 'pre-wrap' }}>{t('success.login')}</Box>, {
-        //   variant: 'success',
-        //   autoHideDuration: 10000,
-        // });
 
         // RESPONSE ERROR
       } catch (error) {
-        const errorMsgs = transformErrors(error, setError);
-        if (state.message && state.message.trim().length !== 0) {
-          showToast({ status: state.status, message: state.message });
+        console.error('CreatePost', error);
+        console.log(error);
+        showToast({ type: 'ERROR', message: error.message });
+        if (error.message && error.message.trim().length !== 0) {
+          showToast(error.status, error.message);
         }
       }
     });

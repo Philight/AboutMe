@@ -15,7 +15,7 @@
   }
 
   .layout__c {
-    @apply relative z-0 min-h-screen;
+    @apply relative z-0 min-h-screen f-col;
   }
 
   .header__c {
@@ -55,5 +55,11 @@
       .navigation__links ~ .divider__c {
       }
     }
+  }
+
+  .footer__c {
+    @apply page-max-w px-[calc(var(--gutter-outer-x)-4px)] desk-sm:px-[calc(var(--gutter-outer-x)-8px)];
+    @apply h-[var(--footer-height)] f-center-y mt-auto w-full;
+    @apply bg-foreground text-background;
   }
 }

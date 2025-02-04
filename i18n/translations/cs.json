@@ -51,7 +51,8 @@
     "title": "Titulek",
     "content": "Obsah",
     "author": "Autor",
-    "send": "Odeslat"
+    "send": "Odeslat",
+    "success": "Článek vytvoren"
   },
   "user": {
     "hero_title": "About {name}",

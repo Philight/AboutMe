@@ -81,6 +81,7 @@
     --gutter-outer-y: 40px;
     --header-height: 64px;
     --announcement-height: 0px;
+    --footer-height: 80px;
 
     /**
      * --gutter-section: 16px;

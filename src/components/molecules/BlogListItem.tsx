@@ -40,13 +40,13 @@ export default function BlogListItem({ id, className, title, content, author, im
     <Card htmlTag="article" className={cn('blog-list-item__c relative', className)}>
       <LazyLoadImage width={100} height={100} layout="responsive" src={image ?? NO_IMAGE} alt="BlogPost Image" />
 
-      <div className="flex items-center gap-2 justify-between">
+      <div className="blog-list-item__content card-content">
         <Tooltip>
           <TooltipTrigger aria-label="visit user profile">
             <Link href={`/${id}`}>
               <CardHeader>
-                <p className="text-sm text-muted-foreground">{author}</p>
-                <CardTitle>{title}</CardTitle>
+                <p className="blog-list-item__author">{author}</p>
+                <CardTitle className="blog-list-item__title">{title}</CardTitle>
               </CardHeader>
             </Link>
           </TooltipTrigger>
@@ -54,9 +54,10 @@ export default function BlogListItem({ id, className, title, content, author, im
             <p>{t('visit_blog_post', { author })}</p>
           </TooltipContent>
         </Tooltip>
+        <CardContent htmlTag="p" className="">
+          {content}
+        </CardContent>
       </div>
-
-      <CardContent className="space-y-4">{content}</CardContent>
     </Card>
   );
 }

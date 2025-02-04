@@ -38,7 +38,7 @@ export default function BlogList({ posts, className }: BlogListProps) {
   return (
     <section className={cn('blog-list__c', className)}>
       <Heading tag="h2">{t('home.blog_title')}</Heading>
-      <div className={cn('blog-list__grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2')}>
+      <div className={cn('blog-list__grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4')}>
         {posts.map((post: any) => (
           <BlogListItem key={post.id} {...post} />
         ))}

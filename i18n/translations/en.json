@@ -50,7 +50,8 @@
     "title": "Title",
     "content": "Content",
     "author": "Author",
-    "send": "Send"
+    "send": "Send",
+    "success": "Post created"
   },
   "user": {
     "hero_title": "About {name}",

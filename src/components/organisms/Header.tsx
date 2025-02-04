@@ -24,7 +24,9 @@ export default function Header() {
 
   return (
     <header className="header__c">
-      <Icon.Q2Logo className="logo" />
+      <Link href="/">
+        <Icon.Q2Logo className="logo" />
+      </Link>
 
       <nav className="flex items-center">
         <li>

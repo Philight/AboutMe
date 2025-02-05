@@ -37,28 +37,28 @@ export default function BlogListItem({ id, className, title, content, author, im
   const t = useTranslations('home');
 
   return (
-    <Card htmlTag="article" className={cn('blog-list-item__c relative', className)}>
-      <div className="image-wrapper">
-        <LazyLoadImage width={100} height={100} layout="responsive" src={image ?? NO_IMAGE} alt="BlogPost Image" />
-      </div>
-      <div className="blog-list-item__content card-content">
-        <Tooltip>
-          <TooltipTrigger aria-label="visit user profile">
-            <Link href={`${routes.posts.id.replace('{$id}', id)}`}>
+    <Tooltip>
+      <TooltipTrigger aria-label="visit user profile">
+        <Link href={`${routes.posts.id.replace('{$id}', id)}`}>
+          <Card htmlTag="article" className={cn('blog-list-item__c relative', className)}>
+            <div className="image-wrapper">
+              <LazyLoadImage width={100} height={100} layout="responsive" src={image ?? NO_IMAGE} alt="BlogPost Image" />
+            </div>
+            <div className="blog-list-item__content card-content">
               <CardHeader>
                 <p className="blog-list-item__author">{author}</p>
                 <CardTitle className="blog-list-item__title">{title}</CardTitle>
               </CardHeader>
-            </Link>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>{t('visit_blog_post', { author })}</p>
-          </TooltipContent>
-        </Tooltip>
-        <CardContent htmlTag="p" className="">
-          {content}
-        </CardContent>
-      </div>
-    </Card>
+              <CardContent htmlTag="p" className="">
+                {content}
+              </CardContent>
+            </div>
+          </Card>
+        </Link>
+      </TooltipTrigger>
+      <TooltipContent className="blog-list-item__tooltip">
+        <p>{t('visit_blog_post', { author })}</p>
+      </TooltipContent>
+    </Tooltip>
   );
 }

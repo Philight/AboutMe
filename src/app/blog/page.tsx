@@ -1,12 +1,8 @@
 import BlogList from '@/components/organisms/BlogList';
+import { getPosts } from '@/utils/api/posts';
+import type { PostType } from '@/utils/api/types';
 
 // ===============================================================
-
-interface Post {
-  id: string;
-  title: string;
-  content: string;
-}
 
 // Force static generation
 export const dynamic = 'force-static';
@@ -20,8 +16,11 @@ export const revalidate = 86400;
 interface Props {}
 
 export default async function Home() {
-  const data = await fetch('https://api.vercel.app/blog');
-  const posts: Post[] = await data.json();
+  // const data = await fetch('https://api.vercel.app/blog');
+  // const posts: Post[] = await data.json();
+
+  const posts: PostType[] = await getPosts();
+
   console.log('HOME', posts);
 
   return (

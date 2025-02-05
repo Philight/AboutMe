@@ -19,6 +19,7 @@ export const AVAILABLE_LOCALES: AvailableLocalesType = [
 // ================================================
 
 export const IS_DEVELOPMENT = process.env.NODE_ENV === 'development';
+export const IS_SERVER = typeof window === 'undefined';
 
 export const PAGINATIOIN_LIMIT = 10;
 

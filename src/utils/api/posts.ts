@@ -12,20 +12,20 @@ export async function getPosts(): Promise<PostType[] | null> {
   try {
     const method = 'GET';
     // const data = await fetchApi(`/posts/list`, { method });
-    // return data;
     const data = await axiosApi(`/posts/list`, { method });
-    return data;
+    return data.applications;
   } catch (e) {
     handleServerError(e);
   }
 }
 
-export async function getPost(): Promise<PostType | null> {
+export async function getPost(id: number | string): Promise<PostType | null> {
   try {
     const method = 'GET';
     // const data = await fetchApi(`/posts/view/${id}`, { method });
     const data = await axiosApi(`/posts/view/${id}`, { method });
-    return data;
+    console.log('getPost', data);
+    return data.post;
   } catch (e) {
     handleServerError(e);
   }

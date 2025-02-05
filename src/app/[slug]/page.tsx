@@ -21,7 +21,8 @@ export type ImageDataType = {
 export default async function UserPublic({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const t = await getTranslations('user');
-  const user = await getUserPublic(slug);
+  // const user = await getUserPublic(slug);
+  const user = null;
 
   if (!user) {
     notFound();

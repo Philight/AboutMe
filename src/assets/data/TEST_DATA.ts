@@ -73,3 +73,16 @@ export const BLOG_POSTS = [
     id: 5,
   },
 ];
+
+export const BLOG_POST = {
+  title: 'Praesent sodales mauris',
+  content:
+    'Nullam bibendum eget arcu vel dictum. Sed non lacus metus. Duis consectetur semper risus in blandit. Etiam vehicula justo quis nulla gravida, quis dictum lorem semper. Vivamus non quam lectus. Vestibulum euismod elementum nunc vel volutpat. Sed ac lacinia magna. Etiam semper, dolor vitae suscipit egestas, diam nibh laoreet justo, eu hendrerit tortor nibh at tellus. Morbi elit libero, commodo a pretium quis, suscipit sed ante. Sed quis erat at massa congue egestas sit amet luctus eros. Cras eu viverra magna, at pretium lacus. Ut tempor sagittis felis ut ultricies. Donec turpis quam, varius vitae enim ac, malesuada finibus nunc. Nam non porta dui, quis fringilla velit.\r\n\r\nNulla sit amet massa pulvinar, rutrum tortor ac, interdum magna. Cras nec ante ac ante pulvinar rhoncus. Nunc est erat, semper id tellus sit amet, porta scelerisque odio. Praesent ac diam a lectus gravida varius. Vestibulum nec maximus ligula. Phasellus porttitor tincidunt enim vitae efficitur. Proin dignissim felis vel eros suscipit malesuada. Aliquam viverra cursus turpis, vitae faucibus orci dictum vel. Donec sed dolor at orci consectetur viverra vel vitae diam. Fusce sem nisi, congue nec consectetur tristique, volutpat vitae massa.',
+  author: 'Q2 Interactive s.r.o ',
+  image: 'https://stage73.q2.cz/q2onboarding/www/img/likas.jpg',
+  createdAt: {
+    date: '2025-01-24 11:18:37.000000',
+    timezone_type: 3,
+    timezone: 'Europe/Prague',
+  },
+};

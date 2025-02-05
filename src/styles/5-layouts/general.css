@@ -31,7 +31,7 @@
       &.navigation--mobile {
         @apply w-[60px];
         button {
-          @apply h-8 py-0 px-2;
+          @apply h-9 w-9 py-0 px-2;
         }
         .lucide-chevron-down {
           @apply hidden;

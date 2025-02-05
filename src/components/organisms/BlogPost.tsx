@@ -28,7 +28,7 @@ export default function BlogPost({ className, id, title, content, author }: Blog
     </div>
   );
 
-  if (!id) {
+  if (!content) {
     return noBlogPosts;
   }
 

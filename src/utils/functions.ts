@@ -51,9 +51,10 @@ export const api = axios.create({
 
 export async function axiosApi(urlOrPath: URL | string, options?: any) {
   const { method = 'GET', data, ...axiosOptions } = options;
-  const baseUrl = getBaseUrlBasedOnServer();
 
+  const baseUrl = getBaseUrlBasedOnServer();
   const url = urlOrPath instanceof URL ? urlOrPath.toString() : urlOrPath.match(VALID_URL) ? new URL(urlOrPath) : `${baseUrl}${urlOrPath}`;
+
   const res = await api(url, {
     method,
     data: JSON.stringify({
@@ -66,12 +67,12 @@ export async function axiosApi(urlOrPath: URL | string, options?: any) {
     // cache: 'no-store',
   });
 
-  return transformAxiosResponse(res);
+  return res.data;
 }
 
-export const transformAxiosResponse = (res) => {
-  return res.data.applications;
-};
+// export const transformAxiosResponse = (res) => {
+//   return res.data.applications;
+// };
 
 export const handleServerError = (error: Error | any) => {
   if (IS_DEVELOPMENT) {

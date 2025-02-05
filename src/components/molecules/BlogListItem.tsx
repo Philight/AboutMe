@@ -1,5 +1,4 @@
 import { CleanUserType } from '@/utils/api/usersApi';
-import { Badge } from '../shadcn/badge';
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
@@ -8,8 +7,10 @@ import { SquareArrowOutUpRight } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../shadcn/card';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../shadcn/tooltip';
 import LazyLoadImage from '@/components/atoms/LazyLoadImage';
+
 import { ICONS_SIZES } from '@/utils/constants';
 import { cn } from '@/utils/functions';
+import type { PostType } from '@/utils/api/types';
 import { routes, navigation } from '/src/navigation';
 
 import type { IGenericProps } from '@/types/generic-types';
@@ -18,20 +19,7 @@ import type { IGenericProps } from '@/types/generic-types';
 
 const NO_IMAGE = '/assets/images/no_image.jpg';
 
-type BlogListItem = {
-  title: string;
-  content: string;
-  author: string;
-  image: string;
-  createdAt: {
-    date: Date | string;
-    timezone_type: number;
-    timezone: string;
-  };
-  id: number;
-};
-
-interface BlogListItemProps extends IGenericProps, BlogListItem {}
+interface BlogListItemProps extends IGenericProps, PostType {}
 
 export default function BlogListItem({ id, className, title, content, author, image }: BlogListItemProps) {
   const t = useTranslations('home');

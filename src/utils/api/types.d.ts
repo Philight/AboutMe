@@ -2,10 +2,11 @@
 // import type { ImageType, IndexParamsType } from '@/types';
 
 export interface PostType {
-  id: string | number;
+  id?: string | number;
   title: string;
   content: string;
   author: string;
+  image?: string | null | undefined;
   createdAt: {
     date: string | Date;
     timezone_type: number;

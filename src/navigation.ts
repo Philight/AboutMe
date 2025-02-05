@@ -1,6 +1,7 @@
 import { createLocalizedPathnamesNavigation } from 'next-intl/navigation';
 
 import { locales, pathnames, localePrefix } from './config-global';
+// import { locale, messages } from '../i18n/request';
 
 export const { Link, getPathname, redirect, usePathname, useRouter } = createLocalizedPathnamesNavigation({
   locales,
@@ -35,3 +36,16 @@ export const routes = {
     privacyPolicy: `${ROOTS.LEGAL}/privacy-policy`,
   },
 };
+
+export const navigation: { title: string; href: string; description: string }[] = [
+  {
+    title: (translations: any) => translations('navigation.blog'),
+    href: routes.blog.root,
+    description: 'The Blog',
+  },
+  {
+    title: (translations: any) => translations('navigation.create_post'),
+    href: routes.posts.create,
+    description: 'Create a new post',
+  },
+];

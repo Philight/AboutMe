@@ -1,3 +1,8 @@
+/**
+ * COMPONENTS: Atoms
+ * 
+ */
+
 @import './atoms/action';
 @import './atoms/animated';
 @import './atoms/form';

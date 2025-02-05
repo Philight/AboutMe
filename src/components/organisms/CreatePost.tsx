@@ -82,7 +82,7 @@ export default function CreatePost({ className }: CreatePostProps) {
       <FormProvider methods={methods} onSubmit={onSubmit}>
         <div className={cn('grid grid-cols-1')}>
           <Field field="input" name="title" type="text" label={t('title')} />
-          <Field field="textarea" name="content" label={t('content')} />
+          <Field field="textarea" name="content" label={t('content')} rows={10} />
           <Field field="input" name="author" type="text" label={t('author')} />
 
           <div className={cn('button__wrapper')}>

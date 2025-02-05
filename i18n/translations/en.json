@@ -31,7 +31,7 @@
     }
   },
   "home": {
-    "hero_title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "hero_title": "Once upon a time, in a distant land, there was a quiet village surrounded by rolling hills and endless skies. The people lived simple lives, filled with laughter, stories, and the warmth of community. Every morning, the sun painted the horizon with hues of gold and amber, while gentle breezes whispered through the trees. In the heart of the village stood an ancient oak, a symbol of strength and resilience, its roots deep in the earth and branches reaching for the stars. Though days passed swiftly, the spirit of wonder remained, carried in the hearts of those who called this peaceful place home.",
     "blog_title": "Newest",
     "visit_blog_post": "Visit {author}'s blog post",
     "user_visit_profile": "Visit {username}'s profile",

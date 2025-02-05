@@ -2,10 +2,10 @@ import { Locale } from '@/i18n/request';
 
 export const LOCALE_COOKIE_NAME = 'locale';
 
-export const DEFAULT_LOCALE: Locale = 'en';
+export const DEFAULT_LOCALE: Locale = 'cs';
 
 export type LocaleType = {
-  label: 'Česky' | 'Italiano' | 'English';
+  label: 'Česky' | 'English';
   tag: Locale;
 };
 
@@ -13,7 +13,6 @@ export type AvailableLocalesType = LocaleType[];
 
 export const AVAILABLE_LOCALES: AvailableLocalesType = [
   { label: 'Česky', tag: 'cs' },
-  { label: 'Italiano', tag: 'it' },
   { label: 'English', tag: 'en' },
 ];
 

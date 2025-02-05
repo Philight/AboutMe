@@ -34,8 +34,10 @@ export default function BlogPost({ className, id, title, content, author }: Blog
 
   return (
     <article className={cn('blog-post__c', className)}>
-      <Heading tag="h2">{author}</Heading>
-      <Separator className="divider" orientation="horizontal" />
+      <div className="">
+        <Heading tag="h2">{author}</Heading>
+        <Separator className="divider" orientation="horizontal" />
+      </div>
       <p>{content}</p>
     </article>
   );

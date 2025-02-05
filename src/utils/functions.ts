@@ -4,34 +4,55 @@ import { ReactNode } from 'react';
 import { type ClassValue, clsx } from 'clsx';
 export { cva, type VariantProps } from 'class-variance-authority';
 import axios from 'axios';
+import { Options, serialize } from 'object-to-formdata';
 
 import { IS_SERVER, IS_DEVELOPMENT } from './constants';
 
 // ================================================
 
-const token = process.env.API_TOKEN;
+const token = process.env.NEXT_PUBLIC_API_TOKEN;
 
 // ================================================
 
 export function getBaseUrlBasedOnServer() {
   // need to include process.env.NEXT_PUBLIC_API_URL if using this function inside a server side component, no need to include it if using the function inside client side component
-  const baseUrl = IS_SERVER ? process.env.NEXT_PUBLIC_API_URL : '';
-
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   return baseUrl;
 }
 
-export async function fetchApi(urlOrPath: URL | string, options?: any) {
-  const { method = 'GET', ...fetchOptions } = options;
-  const baseUrl = getBaseUrlBasedOnServer();
+export const handleServerError = (error: Error | any) => {
+  if (IS_DEVELOPMENT) {
+    console.error(error);
+  }
+  throw error;
+};
 
-  const url = urlOrPath instanceof URL ? urlOrPath.toString() : isValidUrl(urlOrPath) ? new URL(urlOrPath) : `${baseUrl}${urlOrPath}`;
+export async function fetchApi(urlOrPath: URL | string, options?: any) {
+  const { method = 'GET', body, headers, ...fetchOptions } = options;
+  const { 'Content-Type': contentType } = headers;
+
+  // External URLs are rewritten in 'next.config' / 'middleware'
+  const url = urlOrPath instanceof URL ? urlOrPath.toString() : isValidUrl(urlOrPath) ? new URL(urlOrPath) : `${urlOrPath}`;
+
+  const transformedBody = (await contentType) === 'multipart/form-data' ? serializeJsonToFormData({ token, ...body }) : JSON.stringify({ token, ...body });
+
+  const includeBody =
+    method !== 'GET'
+      ? {
+          body: transformedBody,
+        }
+      : {};
+
   const res = await fetch(url, {
     method,
+    ...includeBody,
+    ...headers,
     ...fetchOptions,
     // headers: await headers(),
     // next: { tags: ['getPost'] },
     // cache: 'no-store',
   });
+  console.log('fetchApi res', res);
 
   return await res.json();
 }
@@ -46,7 +67,7 @@ export const api = axios.create({
     'Accept-Language':
       typeof navigator !== 'undefined' ? ((navigator.languages && navigator.languages.length ? navigator.languages[0] : navigator.language) ?? 'cs') : 'cs',
   },
-  // withCredentials: true,
+  withCredentials: true,
 });
 
 export async function axiosApi(urlOrPath: URL | string, options?: any) {
@@ -70,17 +91,6 @@ export async function axiosApi(urlOrPath: URL | string, options?: any) {
   return res.data;
 }
 
-// export const transformAxiosResponse = (res) => {
-//   return res.data.applications;
-// };
-
-export const handleServerError = (error: Error | any) => {
-  if (IS_DEVELOPMENT) {
-    console.error(error);
-  }
-  throw error;
-};
-
 // ================================================
 
 export const encodeId = (id: string): string => Buffer.from(id).toString('base64');
@@ -88,6 +98,14 @@ export const decodeId = (encodedId: string): string => Buffer.from(encodedId, 'b
 
 const VALID_URL = /^((https?:\/\/)|(www\.{1}\w)).*/i; // http | https | www
 export const isValidUrl = (url: URL | string) => url.match(VALID_URL);
+
+export const serializeJsonToFormData = (data: any, options?: Options) =>
+  serialize(data, {
+    booleansAsIntegers: true,
+    indices: true,
+    nullsAsUndefineds: true,
+    ...options,
+  });
 
 // ================================================
 
@@ -112,34 +130,3 @@ export const debounce = <Args extends unknown[]>(
     }, delay);
   };
 };
-
-// export function showToast(status: number, message: string | ReactNode, options?: ExternalToast) {
-export function showToast({ type, status, message, options }: { type?: string; status?: number; message: string | ReactNode; options?: ExternalToast }) {
-  if (type) {
-    switch (type) {
-      case 'SUCCESS':
-        return toast.success(message, options);
-      case 'INFO':
-        return toast.info(message, options);
-      case 'WARNING':
-        return toast.warning(message, options);
-      case 'ERROR':
-        return toast.error(message, options);
-      default:
-        return toast.info('Unexpected type received.', options);
-    }
-  } else {
-    switch (true) {
-      case status >= 200 && status < 300:
-        return toast.success(message, options);
-      case status >= 300 && status < 400:
-        return toast.info(message, options);
-      case status >= 400 && status < 500:
-        return toast.warning(message, options);
-      case status >= 500:
-        return toast.error(message, options);
-      default:
-        return toast.info('Unexpected status received.', options);
-    }
-  }
-}

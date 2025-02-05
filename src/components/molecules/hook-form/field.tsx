@@ -25,7 +25,9 @@ export function Field({ field = 'input', name = 'textField', label = 'Field', he
           <FormControl>
             <RenderField {...field} name={name} type={type} {...other} />
           </FormControl>
-          <FormMessage helperText={error ? error?.message : helperText} />
+          <FormMessage
+          // helperText={error ? error?.message : helperText}
+          />
         </FormItem>
       )}
     />

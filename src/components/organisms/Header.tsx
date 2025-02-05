@@ -48,7 +48,7 @@ export default function Header({ className }: Props) {
 
       <nav className="navigation__c navigation--desktop show-tablet show-desktop">
         <li className={cn('', pathname.includes(routes.blog.root) && 'active')}>
-          <Link href={routes.blog.root}>{t('navigation.blog').toUpperCase()}</Link>
+          <Link href={routes.blog.root}>{t('navigation.blog')}</Link>
         </li>
         <li className={cn('', pathname.includes(routes.posts.create) && 'active')}>
           <Link href={routes.posts.create}>{t('navigation.create_post')}</Link>

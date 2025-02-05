@@ -12,7 +12,11 @@ import FormProvider, { Field, useForm } from '@/components/molecules/hook-form';
 import { useFormErrors } from '@/hooks/use-form-errors';
 
 import Container from '@/layouts/Container';
-import { cn, showToast } from '@/utils/functions';
+
+import { createPost } from '@/utils/api/posts';
+import type { PostType } from '@/utils/api/types';
+import { cn } from '@/utils/functions';
+import { showToast } from '@/utils/helpers';
 import { IS_DEVELOPMENT } from '@/utils/constants';
 
 import type { IGenericProps } from '@/types/generic-types';
@@ -49,29 +53,31 @@ export default function CreatePost({ className }: CreatePostProps) {
         event?.preventDefault();
         clearErrors();
 
-        if (IS_DEVELOPMENT) showToast({ type: 'INFO', message: data });
+        if (IS_DEVELOPMENT) showToast({ type: 'OBJECT', message: data });
 
         // TRANSFORM FIELDS & SEND REQUEST
 
-        const { email, password } = data;
+        const { title, content, author } = data;
 
-        // await logInUser({
-        //   email,
-        //   password,
-        // });
+        const response = await createPost({
+          title,
+          content,
+          author,
+        });
+        console.log('CreatePost', response);
 
         // RESPONSE OK
-        if (state.message && state.message.trim().length !== 0) {
-          showToast({ type: 'ERROR', message: t('success') });
-        }
+        // if (state.message && state.message.trim().length !== 0) {
+        //   showToast({ type: 'ERROR', message: t('success') });
+        // }
 
         // RESPONSE ERROR
       } catch (error) {
         console.error('CreatePost', error);
         console.log(error);
-        showToast({ type: 'ERROR', message: error.message });
+        showToast({ type: 'ERROR', message: error.message, options: { duration: 10000 } });
         if (error.message && error.message.trim().length !== 0) {
-          showToast(error.status, error.message);
+          showToast({ status: error.status, message: error.message });
         }
       }
     });

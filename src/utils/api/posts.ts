@@ -1,6 +1,6 @@
 // Fetching data on the server with the fetch API: https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#fetching-data-on-the-server-with-the-fetch-api
 // import { headers } from 'next/headers';
-import { handleServerError, fetchApi, axiosApi } from '../functions';
+import { handleServerError, fetchApi, axiosApi, serializeJsonToFormData } from '../functions';
 import { IS_DEVELOPMENT } from '../constants';
 import { PostType, CreatePostParams } from './types';
 import axios from 'axios';
@@ -36,18 +36,31 @@ export async function createPost(params: CreatePostParams) {
     const method = 'POST';
     const body = params;
 
-    const data = await fetchApi(`/posts/view/${id}`, { method, body });
-    return data;
-
-    // const baseUrl = getBaseUrlBasedOnServer();
-    // const url = `${baseUrl}/posts/create`;
-    // const res = await fetch(url, {
-    //   method: 'POST',
-    //   body: JSON.stringify({ token, ...params }),
-    //   // headers: await headers(),
+    // const data = await axiosApi(`/posts/create`, {
+    //   method,
+    //   headers: {
+    //    'Content-Type': 'multipart/form-data'
+    //   },
+    //   data: serializeJsonToFormData(params),
     // });
+    // console.log('createPost', data);
+    // return data;
 
-    // return await res.json();
+    console.log('createPost', body);
+    const res = await fetchApi(`/q2/posts/create`, {
+      // mode: 'no-cors',
+      method,
+      headers: {
+        // Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'multipart/form-data',
+      },
+      body,
+    });
+    console.log('createPost', res);
+    console.log('createPost json', res.json());
+    return await res.json();
+
+    //
   } catch (e) {
     handleServerError(e);
   }

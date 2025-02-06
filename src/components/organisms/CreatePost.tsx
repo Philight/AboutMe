@@ -64,20 +64,20 @@ export default function CreatePost({ className }: CreatePostProps) {
           content,
           author,
         });
-        console.log('CreatePost', response);
 
         // RESPONSE OK
-        // if (state.message && state.message.trim().length !== 0) {
-        //   showToast({ type: 'ERROR', message: t('success') });
-        // }
+        if (response.message && response.message.trim().length !== 0) {
+          if (response.status === 'Error') {
+            showToast({ type: 'ERROR', message: response.message });
+          } else {
+            showToast({ type: 'SUCCESS', message: t('success') });
+          }
+        }
 
         // RESPONSE ERROR
       } catch (error) {
-        console.error('CreatePost', error);
-        console.log(error);
-        showToast({ type: 'ERROR', message: error.message, options: { duration: 10000 } });
         if (error.message && error.message.trim().length !== 0) {
-          showToast({ status: error.status, message: error.message });
+          showToast({ status: error.status, message: error.message, options: { duration: 10000 } });
         }
       }
     });

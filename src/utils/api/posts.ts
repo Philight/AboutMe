@@ -22,9 +22,7 @@ export async function getPosts(): Promise<PostType[] | null> {
 export async function getPost(id: number | string): Promise<PostType | null> {
   try {
     const method = 'GET';
-    // const data = await fetchApi(`/posts/view/${id}`, { method });
     const data = await axiosApi(`/posts/view/${id}`, { method });
-    console.log('getPost', data);
     return data.post;
   } catch (e) {
     handleServerError(e);
@@ -46,20 +44,21 @@ export async function createPost(params: CreatePostParams) {
     // console.log('createPost', data);
     // return data;
 
-    console.log('createPost', body);
     const res = await fetchApi(`/q2/posts/create`, {
       // mode: 'no-cors',
       method,
       headers: {
-        // Accept: 'application/json, text/plain, */*',
+        Accept: 'application/json, text/plain, */*',
         'Content-Type': 'multipart/form-data',
       },
       body,
     });
-    console.log('createPost', res);
-    console.log('createPost json', res.json());
-    return await res.json();
 
+    if (res.status === 'Error') {
+      return res;
+    }
+
+    return await res;
     //
   } catch (e) {
     handleServerError(e);

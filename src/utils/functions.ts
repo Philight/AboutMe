@@ -1,3 +1,4 @@
+// import { headers } from 'next/headers';
 import { twMerge } from 'tailwind-merge';
 import { ExternalToast, toast } from 'sonner';
 import { ReactNode } from 'react';
@@ -34,7 +35,7 @@ export async function fetchApi(urlOrPath: URL | string, options?: any) {
   // External URLs are rewritten in 'next.config' / 'middleware'
   const url = urlOrPath instanceof URL ? urlOrPath.toString() : isValidUrl(urlOrPath) ? new URL(urlOrPath) : `${urlOrPath}`;
 
-  const transformedBody = (await contentType) === 'multipart/form-data' ? serializeJsonToFormData({ token, ...body }) : JSON.stringify({ token, ...body });
+  const transformedBody = await (contentType === 'multipart/form-data' ? serializeJsonToFormData({ token, ...body }) : JSON.stringify({ token, ...body }));
 
   const includeBody =
     method !== 'GET'
@@ -47,12 +48,12 @@ export async function fetchApi(urlOrPath: URL | string, options?: any) {
     method,
     ...includeBody,
     ...headers,
-    ...fetchOptions,
+    credentials: 'include',
     // headers: await headers(),
     // next: { tags: ['getPost'] },
     // cache: 'no-store',
+    ...fetchOptions,
   });
-  console.log('fetchApi res', res);
 
   return await res.json();
 }
